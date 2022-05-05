@@ -1,11 +1,19 @@
 import React from 'react';
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 import Banner from '../Banner/Banner';
+import Cars from '../Cars/Cars';
+import Contents from '../Contents/Contents';
+import Review from '../Review/Review'
 
 const Home = () => {
     return (
-        <div>
+        <>
+            {/* <PageTitle title="Home"></PageTitle> */}
             <Banner></Banner>
-        </div>
+            <Cars></Cars>
+            <Contents></Contents>
+            <Review></Review>
+        </>
     );
 };
 

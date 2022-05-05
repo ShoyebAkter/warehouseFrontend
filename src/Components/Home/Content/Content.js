@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Content = () => {
+const Content = ({content}) => {
+    const {img,description}=content;
     return (
         <div>
-            <p>My content</p>
+            <img src={img} alt=""></img>
+            <p>{description} </p>
         </div>
     );
 };

@@ -10,7 +10,7 @@ import {Route, Routes} from 'react-router-dom'
 import MyItems from './Components/MyItems/MyItems';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import Footer from './Components/Shared/Footer/Footer';
-import Content from './Components/Home/Content/Content';
+import Contents from './Components/Home/Contents/Contents';
 function App() {
   return (
     <div>
@@ -20,7 +20,7 @@ function App() {
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='/manageinventory' element={<ManageInventory></ManageInventory>}></Route>
-          <Route path='/content' element={<Content></Content>}></Route>
+          <Route path='/contents' element={<Contents></Contents>}></Route>
           <Route path='/myitems' element={<MyItems></MyItems>}></Route>
           <Route path='/carsdetails/:id' element={<CarsDetails></CarsDetails>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
