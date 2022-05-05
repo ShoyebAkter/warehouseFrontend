@@ -4,6 +4,7 @@ const Review = () => {
     return (
         <div>
             <h3>Review about the cars</h3>
+            
         </div>
     );
 };

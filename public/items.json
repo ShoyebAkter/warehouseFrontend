@@ -4,41 +4,53 @@
         "name": "ENGINE DIAGNOSTIC",
         "price": "300",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "items/item1.jpg"
+        "img": "items/item1.jpg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     },
     {
         "id": 2,
         "name": "WHEEL ALIGNMENT",
         "price": "100",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "items/item2.jpg"
+        "img": "items/item2.jpg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     },
     {
         "id": 3,
         "name": "OIL CHANGING",
         "price": "150",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "items/item3.jpg"
+        "img": "items/item3.jpg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     },
     {
         "id": 4,
         "name": "BRAKE REPARING",
         "price": "180",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "items/item4.jpeg"
+        "img": "items/item4.jpeg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     },
     {
         "id": 5,
         "name": "WASH AND GLASSING",
         "price": "100",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "items/item5.jpg"
+        "img": "items/item5.jpg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     },
     {
         "id": 6,
         "name": "COMPLETE ANALYSIS",
         "price": "300",
         "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
-        "img": "items/item6.jpg"
+        "img": "items/item6.jpg",
+        "quantity":5,
+        "supplier-name":"Shoyeb"
     }
 ]
