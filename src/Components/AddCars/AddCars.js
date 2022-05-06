@@ -1,9 +1,34 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
 
 const AddCars = () => {
+    const { register, handleSubmit } = useForm();
+    
+    const onSubmit = data => {
+        console.log(data);
+        const url = `https://evening-shore-63424.herokuapp.com/car`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res=> res.json())
+        .then(result =>{
+            console.log(result);
+        } )
+    };
     return (
-        <div>
-            <h2>This is where u add cars</h2>
+        <div className='w-50 mx-auto'>
+            <h2>Please add a Car</h2>
+            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+                <input className='mb-2' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
+                <textarea className='mb-2' placeholder='Description' {...register("description")} />
+                <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
+                <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
+                <input type="submit" value="Add Car" />
+            </form>
         </div>
     );
 };

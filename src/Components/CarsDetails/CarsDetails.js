@@ -10,7 +10,10 @@ const CarsDetails = () => {
     console.log(carId,car)
     return (
         <div>
-            <h2>Details about: {car.name} </h2>
+            <h2>Car Id: {car._id} </h2>
+            <p>Car : {car.name}</p>
+            <p>description: {car.description}</p>
+            <p>Price: {car.price}</p>
         </div>
     );
 };

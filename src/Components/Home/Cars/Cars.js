@@ -14,11 +14,11 @@ const Cars = () => {
     return (
         <div id="cars" className='container'>
             <div className="row">
-            <h1 className='text-primary text-center mt-5'> Our Services</h1>
+            <h1 className='text-primary text-center mt-5'> Our Cars</h1>
             <div className="cars-container">
             {
                 cars.map(car=> <Car
-                key={car.id}
+                key={car._id}
                 car={car}
                 ></Car>)
             }
