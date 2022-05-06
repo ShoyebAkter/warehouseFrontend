@@ -3,7 +3,7 @@ import './Car.css'
 import { useNavigate } from 'react-router-dom';
 
 const Car = ({car}) => {
-    const {id,img,description,quantity,price,suppliername,name}=car;
+    const {_id,img,description,quantity,price,suppliername,name}=car;
     const naviagate=useNavigate();
 
     const navigateToCarDetail=(id)=>{
@@ -18,7 +18,7 @@ const Car = ({car}) => {
             <p>Quantity: {quantity}</p>
             <p><small>{description}</small></p>
 
-            <button onClick={() => navigateToCarDetail(id)} className='btn btn-primary'>Details:{name}</button>
+            <button onClick={() => navigateToCarDetail(_id)} className='btn btn-primary'>Details:{name}</button>
         </div>
     );
 };
