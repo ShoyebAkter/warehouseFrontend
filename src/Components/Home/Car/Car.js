@@ -7,7 +7,7 @@ const Car = ({car}) => {
     const naviagate=useNavigate();
 
     const navigateToCarDetail=(id)=>{
-            naviagate(`/carsdetails/${id}`)
+            naviagate(`/car/${id}`)
     }
     return (
         <div className='car'>

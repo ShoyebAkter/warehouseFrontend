@@ -12,6 +12,8 @@ import NotFound from './Components/Shared/NotFound/NotFound';
 import Footer from './Components/Shared/Footer/Footer';
 import Contents from './Components/Home/Contents/Contents';
 import Register from './Components/Login/Register/Register';
+import RequireAuth from './Components/Login/RequireAuth/RequireAuth';
+import AddCars from './Components/AddCars/AddCars';
 function App() {
   return (
     <div>
@@ -19,14 +21,33 @@ function App() {
       <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/home' element={<Home></Home>}></Route>
+          <Route path='/car/:carId' element={<CarsDetails></CarsDetails>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
-          <Route path='/manageinventory' element={<ManageInventory></ManageInventory>}></Route>
+          <Route path='/checkout/:carId' element={
+            <RequireAuth>
+              {/* <Checkout></Checkout> */}
+            </RequireAuth>
+          }></Route>
+          <Route path='/manage' element={
+            <RequireAuth>
+              <ManageInventory></ManageInventory>
+            </RequireAuth>
+          }></Route>
           <Route path='/contents' element={<Contents></Contents>}></Route>
-          <Route path='/myitems' element={<MyItems></MyItems>}></Route>
-          <Route path='/carsdetails/:carId' element={<CarsDetails></CarsDetails>}></Route>
+          <Route path='/myitems' element={
+            <RequireAuth>
+              <MyItems></MyItems>
+            </RequireAuth>
+          
+          }></Route>
+          <Route path='/addcars' element={
+          <RequireAuth>
+            <AddCars></AddCars>
+          </RequireAuth>
+          }></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
