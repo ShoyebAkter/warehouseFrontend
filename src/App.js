@@ -11,6 +11,7 @@ import MyItems from './Components/MyItems/MyItems';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import Footer from './Components/Shared/Footer/Footer';
 import Contents from './Components/Home/Contents/Contents';
+import Register from './Components/Login/Register/Register';
 function App() {
   return (
     <div>
@@ -23,8 +24,9 @@ function App() {
           <Route path='/manageinventory' element={<ManageInventory></ManageInventory>}></Route>
           <Route path='/contents' element={<Contents></Contents>}></Route>
           <Route path='/myitems' element={<MyItems></MyItems>}></Route>
-          <Route path='/carsdetails/:id' element={<CarsDetails></CarsDetails>}></Route>
+          <Route path='/carsdetails/:carId' element={<CarsDetails></CarsDetails>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/register' element={<Register></Register>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
