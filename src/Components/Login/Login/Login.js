@@ -6,7 +6,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import SocialLogin from '../Social/SocialLogin';
-// import useToken from '../../../hooks/useToken/useToken';
+import useToken from '../../../hooks/useToken/useToken';
+import Loading from '../../Shared/Loading/Loading';
 
 const Login = () => {
 
@@ -25,14 +26,14 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-    // const [token] = useToken(user);
+    const [token] = useToken(user);
     if (loading || sending) {
-        // return <Loading></Loading>
+        return <Loading></Loading>
     }
 
-    // if (token) {
-    //     navigate(from, { replace: true });
-    // }
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
     if (error) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
@@ -44,7 +45,9 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
+        
     }
+   
 
     const navigateRegister = event => {
         navigate('/register');

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../Social/SocialLogin';
 import './Register.css'
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
+    const location=useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -30,15 +32,18 @@ const Register = () => {
     // }
 
     const handleRegister = async (event) => {
+        
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        // const agree = event.target.terms.checked;
+        
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
         console.log('Updated profile');
+
+        navigate(from, { replace: true });
         // 
     }
     return (

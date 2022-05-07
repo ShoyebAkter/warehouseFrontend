@@ -14,6 +14,7 @@ import Contents from './Components/Home/Contents/Contents';
 import Register from './Components/Login/Register/Register';
 import RequireAuth from './Components/Login/RequireAuth/RequireAuth';
 import AddCars from './Components/AddCars/AddCars';
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <div>
@@ -55,6 +56,7 @@ function App() {
           <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

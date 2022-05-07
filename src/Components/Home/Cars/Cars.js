@@ -17,7 +17,7 @@ const Cars = () => {
             <h1 className='text-primary text-center mt-5'> Our Cars</h1>
             <div className="cars-container">
             {
-                cars.map(car=> <Car
+                cars.slice(0,6).map(car=> <Car
                 key={car._id}
                 car={car}
                 ></Car>)

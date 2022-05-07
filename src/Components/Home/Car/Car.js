@@ -9,9 +9,7 @@ const Car = ({car}) => {
     const navigateToCarDetail=(id)=>{
             naviagate(`/car/${id}`)
     }
-    const navigateManageInventory=()=>{
-        naviagate(`manage`);
-    }
+    
     return (
         <div className='car'>
             <img className='w-100' src={img} alt="" />
@@ -22,7 +20,7 @@ const Car = ({car}) => {
             <p><small>{description}</small></p>
 
             <button onClick={() => navigateToCarDetail(_id)} className='btn btn-primary'>Details:{name}</button><br></br>
-            <Link to="/login" className='text-primary pe-auto text-decoration-none' onClick={navigateManageInventory}>Manage Inventory</Link>
+            
             
         </div>
     );
