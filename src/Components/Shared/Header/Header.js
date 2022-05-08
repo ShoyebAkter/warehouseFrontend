@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {useAuthState} from 'react-firebase-hooks/auth'
-import auth from '../../../firebase.init'
+import auth from '../../../../firebase.init'
 import logo from '../../../image/banner/logo192.png'
 import {Link} from 'react-router-dom'
 import { signOut } from 'firebase/auth';
