@@ -4,11 +4,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import axiosPrivate from '../../Components/api/axiosPrivate';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useCars from '../../hooks/useCars/useCars';
 
 const MyItems = () => {
+    const [cars,setCars]=useCars();
     const [user]=useAuthState(auth);
     const [items,setItems]=useState([]);
     const navigate=useNavigate();
+    console.log(items)
 
     useEffect(()=>{
         const getItems=async()=>{
@@ -30,12 +33,29 @@ const MyItems = () => {
         getItems()
     },[user])
 
+    const handleDelete= id =>{
+        const confirm=window.confirm('Are you sure?');
+        if(confirm){
+            const url=`https://evening-shore-63424.herokuapp.com/car/${id}`;
+            fetch(url,{
+                method: 'DELETE'
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                const remaining=cars.filter(car=> car._id!==id)
+                setCars(remaining);
+            })
+        }
+    }
+
     return (
         <div className='w-50 mx-auto'>
             <h2>My total Items: {items.length} </h2>
             {
-                items.map(item=> <div key={item._id}>
-                    <p>{item.email} : {item.car}</p>
+                items.map(item=>
+                 <div className='border border-secondary rounded d-flex justify-content-between p-3 my-2' key={item._id}>
+                    <h4>{item.email} : {item.car}</h4>
+                    <button className='btn btn-danger' onClick={()=>handleDelete(item._id)}>Delete</button>
                 </div>)
             }
         </div>

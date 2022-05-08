@@ -14,7 +14,7 @@ const Home = () => {
             {/* <PageTitle title="Home"></PageTitle> */}
             <Banner></Banner>
             <Cars></Cars>
-            <Link to="/manage" className='text-primary pe-auto text-decoration-none' >Manage Inventory</Link>
+            <Link to="/manage" className='text-primary mt-2 d-flex justify-content-center pe-auto text-decoration-none' >Manage Inventory</Link>
             <Contents></Contents>
             <Review></Review>
             

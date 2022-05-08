@@ -4,8 +4,6 @@ import useCars from '../../hooks/useCars/useCars';
 
 const ManageInventory = () => {
     const [cars,setCars]=useCars();
-    // console.log(cars)
-
     
 
     const handleDelete= id =>{
@@ -23,15 +21,17 @@ const ManageInventory = () => {
         }
     }
     return (
-        <div className='w-50 mx-auto'>
+        <div className='w-50 mx-auto' style={{minHeight:'100vh'}}>
             <h2>Manage Inventory</h2>
+            
             {
-                cars.map(car => <div>
-                    <h4>Car: {car.name}</h4>
-                    <button onClick={()=>handleDelete(car._id)}>X</button>
+                cars.map(car => <div className='border border-secondary rounded d-flex justify-content-between p-3 my-2'>
+                    <h4 className='text-primary'>Car: {car.name}</h4>
+                    <h5>Price:{car.price}</h5>
+                    <button className='btn btn-danger' onClick={()=>handleDelete(car._id)}>Delete</button>
                 </div>)
             }
-            <button><Link to="/addcars" className='text-primary pe-auto text-decoration-none' >Add Cars</Link></button>
+            <Link to="/addcars" className='text-white rounded p-2 bg-primary text-decoration-none' >Add Cars</Link>
         </div>
     );
 };

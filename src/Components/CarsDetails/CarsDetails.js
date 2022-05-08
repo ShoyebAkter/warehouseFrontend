@@ -1,66 +1,97 @@
-// The page should display detailed item information like id,
-//  name, image, description, price, quantity, supplier name, sold, etc. This page will have a Button named delivered. 
-import axios from 'axios';
-import React from 'react';
+import { signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 import useCarDetails from '../../hooks/useCarDetails/useCarDetails';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
+import axiosPrivate from '../api/axiosPrivate';
+import axios from 'axios';
 
-const CarsDetails = () => {
-    const {carId}=useParams()
-    const [car]=useCarDetails(carId)
-    const [user]=useAuthState(auth);
+const UpdateProduct = () => {
+    const {carId} =useParams();
+    const [car] = useCarDetails(carId);
+    const [user] = useAuthState(auth);
+    const [cars ,setCars]=useState({})
+    const [qty,setQty] =useState(0)
+    useEffect(()=>{
+fetch(`https://evening-shore-63424.herokuapp.com/car/${carId}`)
+.then(res=>res.json())
+.then(data=>{setCars(data)
+            setQty(data.quantity)})
+    },[qty])
 
-    const handleDelivered=event=>{
+    const handleUpdateproduct=event =>{
+        event.preventDefault()
+        const quantity=parseInt(event.target.quantity.value)+parseInt(cars.quantity)
+        if(parseInt(quantity)<1){
+            return alert('number of products cannot be less than 0')}
+        const updateproduct={quantity}
+        fetch(`https://evening-shore-63424.herokuapp.com/car/${carId}`,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(updateproduct)
+        })
+        .then(res=>res.json())
+        .then(data=>{console.log('success',data)
+        setQty(quantity)
+    alert('product updated successfully')})
+    }
+
+    
+
+
+    const handleDeliveryproduct=event =>{
         event.preventDefault();
-        const newQuantity=event.target.quantity.value-1;
-        const order={
+        const order = {
             email:user.email,
-            car:car.name,
-            carId:carId,
-            address: event.target.address.value,
-            phone: event.target.phone.value,
-            quantity:newQuantity,
-            price:event.target.price.value
+            car: car.name,
+            carId: carId,
         }
-        axios.post('https://evening-shore-63424.herokuapp.com/order',order)
-        .then(response=>{
-            console.log(response)
-            const {data}=response;
+        axios.post('https://evening-shore-63424.herokuapp.com/order', order)
+        .then(response =>{
+            const {data} = response;
             if(data.insertedId){
-                toast('Your order is delivered');
+                alert('Your order is booked!!!');
                 event.target.reset();
             }
         })
+        if(parseInt(cars.quantity)===0){
+            return alert('stock out')
+        }
+        const quantity=parseInt(cars.quantity)-1
+        const updateproduct={quantity}
+        fetch(`https://evening-shore-63424.herokuapp.com/car/${carId}`,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(updateproduct)
+        })
+        .then(res=>res.json())
+        .then(data=>{console.log('success',data)
+        setQty(quantity)
+    alert('product delivered successfully')}
+    )
     }
     return (
-        <div className='w-50 mx-auto'>
-            <h2>Please Order: {car.name}</h2>
-            <form onSubmit={handleDelivered}>
-                <input className='w-100 mb-2' type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled/>
-                <br />
-                <input className='w-100 mb-2' type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
-                <br />
-                <input className='w-100 mb-2' type="text" value={car.name} name="service" placeholder='service' required readOnly />
-                <br />
-                <input className='w-100 mb-2' type="text" value={car.price} name="price" placeholder='price' required readOnly />
-                <br />
-                <input className='w-100 mb-2' type="text" value={car.quantity} name="quantity" placeholder='quantity' required  />
-                <br />
-                <input className='w-100 mb-2' type="text" name="address" placeholder='address' autoComplete='off' required />
-                <br />
-                <input className='w-100 mb-2' type="text" name="phone" placeholder='phone' required />
-                <br />
-                <input className='btn btn-primary mb-2' type="submit" value="Place Order" />
-                <br />
-                <input className='w-100 mb-2' type="number" name="restock" placeholder='restock' required />
-                <br />
-                <button className='btn btn-primary'>Restock</button>
+        <div className='w-50 mx-auto' >
+        <p>{carId}</p>
+        <p>Description: {cars.description}</p>
+        <p>Price: {cars.price}</p>
+        <h2>Updating Cars: {cars.name}</h2>
+        <button className='btn btn-primary' onClick={handleDeliveryproduct}>Delivered</button>
+        <p>Quantity: {qty}</p>
+        <form onSubmit={handleUpdateproduct}> 
+
+                <input type="number" name='quantity' placeholder='enter quantity' required />
+                <br/>
+                <input className='bg-primary text-white p-2 rounded mt-2' style={{border:'none'}} type='submit'   value='add to stock'/>
             </form>
+            <Link to="/manage" className='text-primary d-flex justify-content-center pe-auto text-decoration-none' >Manage Inventory</Link>
         </div>
     );
 };
 
-export default CarsDetails;
+export default UpdateProduct;

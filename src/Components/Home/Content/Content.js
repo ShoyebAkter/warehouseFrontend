@@ -7,13 +7,13 @@ import news3 from '../../../image/news/news3.jpg'
 const Content = () => {
 
     return (
-        <div>
+        <div className='mt-3 mb-3'>
             <h2 className='text-primary'>Trending News</h2>
             <CardGroup>
                 <Card>
                     <Card.Img variant="top" src={news1} />
                     <Card.Body>
-                        <Card.Title>Electric Vehicles</Card.Title>
+                        <Card.Title> Electric Vehicles</Card.Title>
                         <Card.Text>
                           Why 2021 is shaping up to be a pivotal year for electric vehicles 
                         </Card.Text>

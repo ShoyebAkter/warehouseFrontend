@@ -8,34 +8,31 @@ import ManageInventory from './Components/ManageInventory/ManageInventory'
 import CarsDetails from './Components/CarsDetails/CarsDetails'
 import {Route, Routes} from 'react-router-dom'
 import MyItems from './Components/MyItems/MyItems';
-import NotFound from './Components/Shared/NotFound/NotFound';
 import Footer from './Components/Shared/Footer/Footer';
 import Contents from './Components/Home/Contents/Contents';
 import Register from './Components/Login/Register/Register';
 import RequireAuth from './Components/Login/RequireAuth/RequireAuth';
 import AddCars from './Components/AddCars/AddCars';
 import { ToastContainer } from 'react-toastify';
+import NotFound from './Components/Shared/NotFound/NotFound';
 function App() {
   return (
     <div>
       <Header></Header>
+      
       <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/home' element={<Home></Home>}></Route>
+          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='/car/:carId' element={
           <RequireAuth>
             <CarsDetails></CarsDetails>
           </RequireAuth>
           }></Route>
           <Route path='/about' element={<About></About>}></Route>
-          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
-          <Route path='/checkout/:carId' element={
-            <RequireAuth>
-              {/* <Checkout></Checkout> */}
-            </RequireAuth>
-          }></Route>
           <Route path='/manage' element={
             <RequireAuth>
               <ManageInventory></ManageInventory>
@@ -55,8 +52,9 @@ function App() {
           }></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-      <Footer></Footer>
       <ToastContainer></ToastContainer>
+      <Footer></Footer>
+      
     </div>
   );
 }

@@ -11,7 +11,7 @@ const Contents = () => {
     },[])
     return (
         <div className='container'>
-            <h4>News</h4>
+            
             {
                 contents.map(content=> <Content
                 key={content.id}
