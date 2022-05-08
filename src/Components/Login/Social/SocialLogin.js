@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import auth from '../../../../firebase.init';
+import auth from '../../../firebase.init';
 import google from '../../../image/google/download.png'
 import Loading from '../../Shared/Loading/Loading';
 
