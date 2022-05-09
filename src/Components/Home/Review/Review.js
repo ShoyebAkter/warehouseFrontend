@@ -7,7 +7,7 @@ import review3 from '../../../image/review/3.jpg'
 const Review = () => {
     return (
         <div>
-            <h2>Reviews of different cars</h2>
+            <h2 className='text-primary'>Reviews of different cars</h2>
             <CardGroup>
                 <Card>
                     <Card.Img variant="top" src={review1} />

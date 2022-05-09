@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useCars from '../../hooks/useCars/useCars';
 
-const MyItems = () => {
+const MyDeleveryItems = () => {
     const [cars,setCars]=useCars();
     const [user]=useAuthState(auth);
     const [items,setItems]=useState([]);
@@ -49,11 +49,11 @@ const MyItems = () => {
     }
 
     return (
-        <div className='w-50 mx-auto'>
+        <div >
             <h2>My total Items: {items.length} </h2>
             {
                 items.map(item=>
-                 <div className='border border-secondary rounded d-flex justify-content-between p-3 my-2' key={item._id}>
+                 <div className='border border-secondary rounded d-sm-flex justify-content-between p-3 my-2' key={item._id}>
                     <h4>{item.email} : {item.car}</h4>
                     <button className='btn btn-danger' onClick={()=>handleDelete(item._id)}>Delete</button>
                 </div>)
@@ -62,4 +62,4 @@ const MyItems = () => {
     );
 };
 
-export default MyItems;
+export default MyDeleveryItems;

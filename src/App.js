@@ -7,7 +7,7 @@ import Login from './Components/Login/Login/Login'
 import ManageInventory from './Components/ManageInventory/ManageInventory'
 import CarsDetails from './Components/CarsDetails/CarsDetails'
 import {Route, Routes} from 'react-router-dom'
-import MyItems from './Components/MyItems/MyItems';
+import MyDeleveryItems from './Components/MyItems/MyItems';
 import Footer from './Components/Shared/Footer/Footer';
 import Contents from './Components/Home/Contents/Contents';
 import Register from './Components/Login/Register/Register';
@@ -39,9 +39,9 @@ function App() {
             </RequireAuth>
           }></Route>
           <Route path='/contents' element={<Contents></Contents>}></Route>
-          <Route path='/myitems' element={
+          <Route path='/MyDeleveryItems' element={
             <RequireAuth>
-              <MyItems></MyItems>
+              <MyDeleveryItems></MyDeleveryItems>
             </RequireAuth>
           
           }></Route>
